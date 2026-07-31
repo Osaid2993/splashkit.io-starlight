@@ -31,7 +31,8 @@ namespace VectorFromAngleExample
                     Y = SplashKit.ScreenHeight() / 2
                 };
 
-                Vector2D direction = SplashKit.VectorFromAngle(angle, length);
+                Vector2D direction =
+                    SplashKit.VectorFromAngle(angle, length);
 
                 Point2D endPoint = new Point2D()
                 {
@@ -42,17 +43,34 @@ namespace VectorFromAngleExample
                 SplashKit.ClearScreen(Color.Black);
 
                 SplashKit.DrawLine(
-                    Color.DeepSkyBlue,
+                    Color.Blue,
                     center.X,
                     center.Y,
                     endPoint.X,
                     endPoint.Y
                 );
 
-                SplashKit.FillCircle(Color.Yellow, endPoint.X, endPoint.Y, 10);
-                SplashKit.FillCircle(Color.White, center.X, center.Y, 6);
+                SplashKit.FillCircle(
+                    Color.Yellow,
+                    endPoint.X,
+                    endPoint.Y,
+                    10
+                );
 
-                SplashKit.DrawText($"Angle: {angle:0}°", Color.White, 20, 20);
+                SplashKit.FillCircle(
+                    Color.White,
+                    center.X,
+                    center.Y,
+                    6
+                );
+
+                SplashKit.DrawText(
+                    $"Angle: {angle:0} degrees",
+                    Color.White,
+                    20,
+                    20
+                );
+
                 SplashKit.DrawText(
                     "Use Left and Right Arrow Keys",
                     Color.LightGray,

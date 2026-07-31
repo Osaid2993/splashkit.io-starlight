@@ -1,12 +1,12 @@
 using SplashKitSDK;
 using static SplashKitSDK.SplashKit;
 
-Window window = new("Vector From Angle", 800, 600);
+OpenWindow("Vector From Angle", 800, 600);
 
 double angle = 0;
 const double length = 180;
 
-while (!window.CloseRequested)
+while (!QuitRequested())
 {
     ProcessEvents();
 
@@ -20,28 +20,57 @@ while (!window.CloseRequested)
         angle += 2;
     }
 
-    ClearScreen(Color.Black);
-
-    Point2D center = new()
-    {
-        X = window.Width / 2,
-        Y = window.Height / 2
-    };
+    Point2D center = PointAt(
+        ScreenWidth() / 2,
+        ScreenHeight() / 2
+    );
 
     Vector2D direction = VectorFromAngle(angle, length);
 
-    Point2D end = new()
-    {
-        X = center.X + direction.X,
-        Y = center.Y + direction.Y
-    };
+    Point2D end = PointAt(
+        center.X + direction.X,
+        center.Y + direction.Y
+    );
 
-    DrawLine(Color.DeepSkyBlue, center.X, center.Y, end.X, end.Y);
-    FillCircle(Color.Yellow, end.X, end.Y, 10);
-    FillCircle(Color.White, center.X, center.Y, 6);
+    ClearScreen(ColorBlack());
 
-    DrawText($"Angle: {angle:0}°", Color.White, 20, 20);
-    DrawText("Use Left/Right Arrow Keys", Color.LightGray, 20, 50);
+    DrawLine(
+        ColorDeepSkyBlue(),
+        center.X,
+        center.Y,
+        end.X,
+        end.Y
+    );
+
+    FillCircle(
+        ColorYellow(),
+        end.X,
+        end.Y,
+        10
+    );
+
+    FillCircle(
+        ColorWhite(),
+        center.X,
+        center.Y,
+        6
+    );
+
+    DrawText(
+        $"Angle: {angle:0} degrees",
+        ColorWhite(),
+        20,
+        20
+    );
+
+    DrawText(
+        "Use Left/Right Arrow Keys",
+        ColorLightGray(),
+        20,
+        50
+    );
 
     RefreshScreen(60);
 }
+
+CloseAllWindows();
