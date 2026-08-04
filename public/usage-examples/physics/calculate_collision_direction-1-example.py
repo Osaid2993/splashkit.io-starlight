@@ -7,6 +7,7 @@ moving_y = 300
 
 fixed_x = 520
 fixed_y = 300
+
 radius = 70
 speed = 3
 
@@ -25,27 +26,34 @@ while not quit_requested():
     if key_down(KeyCode.down_key):
         moving_y += speed
 
-    moving_circle = circle_at(
+    moving_circle = circle_at_from_points(
         moving_x,
         moving_y,
         radius
     )
 
-    fixed_circle = circle_at(
+    fixed_circle = circle_at_from_points(
         fixed_x,
         fixed_y,
         radius
     )
 
-    collision_direction = calculate_collision_direction(
+    collision_direction = calculate_collision_direction_between_circles(
         moving_circle,
         fixed_circle
     )
 
     clear_screen(color_black())
 
-    fill_circle_record(color_blue(), moving_circle)
-    fill_circle_record(color_orange(), fixed_circle)
+    fill_circle_record(
+        color_blue(),
+        moving_circle
+    )
+
+    fill_circle_record(
+        color_orange(),
+        fixed_circle
+    )
 
     if collision_direction.x != 0 or collision_direction.y != 0:
         line_end_x = moving_x + collision_direction.x * 120
