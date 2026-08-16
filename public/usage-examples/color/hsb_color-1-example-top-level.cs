@@ -11,6 +11,7 @@ while (!QuitRequested())
 {
     ProcessEvents();
 
+    // Use the keyboard to adjust the HSB values.
     if (KeyDown(KeyCode.LeftKey))
     {
         hue -= 0.005;
@@ -41,16 +42,19 @@ while (!QuitRequested())
         brightness += 0.005;
     }
 
+    // Keep each HSB value between 0 and 1.
     hue = Math.Clamp(hue, 0.0, 1.0);
     saturation = Math.Clamp(saturation, 0.0, 1.0);
     brightness = Math.Clamp(brightness, 0.0, 1.0);
 
+    // Create a color from the current HSB values.
     Color selectedColor = HSBColor(
         hue,
         saturation,
         brightness
     );
 
+    // Draw the selected color and its current values.
     ClearScreen(ColorBlack());
 
     FillRectangle(

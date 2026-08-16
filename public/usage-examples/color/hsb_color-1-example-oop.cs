@@ -16,6 +16,7 @@ namespace HSBColorExample
             {
                 SplashKit.ProcessEvents();
 
+                // Use the keyboard to adjust the HSB values.
                 if (SplashKit.KeyDown(KeyCode.LeftKey))
                 {
                     hue -= 0.005;
@@ -46,16 +47,19 @@ namespace HSBColorExample
                     brightness += 0.005;
                 }
 
+                // Keep each HSB value between 0 and 1.
                 hue = Math.Clamp(hue, 0.0, 1.0);
                 saturation = Math.Clamp(saturation, 0.0, 1.0);
                 brightness = Math.Clamp(brightness, 0.0, 1.0);
 
+                // Create a color from the current HSB values.
                 Color selectedColor = SplashKit.HSBColor(
                     hue,
                     saturation,
                     brightness
                 );
 
+                // Draw the selected color and its current values.
                 SplashKit.ClearScreen(Color.Black);
 
                 SplashKit.FillRectangle(

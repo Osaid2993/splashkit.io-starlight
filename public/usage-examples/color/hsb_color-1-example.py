@@ -9,6 +9,7 @@ brightness = 1.0
 while not quit_requested():
     process_events()
 
+    # Use the keyboard to adjust the HSB values.
     if key_down(KeyCode.left_key):
         hue -= 0.005
 
@@ -27,16 +28,19 @@ while not quit_requested():
     if key_down(KeyCode.w_key):
         brightness += 0.005
 
+    # Keep each HSB value between 0 and 1.
     hue = max(0.0, min(1.0, hue))
     saturation = max(0.0, min(1.0, saturation))
     brightness = max(0.0, min(1.0, brightness))
 
+    # Create a color from the current HSB values.
     selected_color = hsb_color(
         hue,
         saturation,
         brightness
     )
 
+    # Draw the selected color and its current values.
     clear_screen(color_black())
 
     fill_rectangle(

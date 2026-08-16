@@ -12,6 +12,7 @@ int main()
     {
         process_events();
 
+        // Use the keyboard to adjust the HSB values.
         if (key_down(LEFT_KEY))
         {
             hue -= 0.005;
@@ -42,6 +43,7 @@ int main()
             brightness += 0.005;
         }
 
+        // Keep each HSB value between 0 and 1.
         if (hue < 0.0)
         {
             hue = 0.0;
@@ -72,12 +74,14 @@ int main()
             brightness = 1.0;
         }
 
+        // Create a color from the current HSB values.
         color selected_color = hsb_color(
             hue,
             saturation,
             brightness
         );
 
+        // Draw the selected color and its current values.
         clear_screen(COLOR_BLACK);
 
         fill_rectangle(
