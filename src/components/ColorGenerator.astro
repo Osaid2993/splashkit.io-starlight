@@ -238,7 +238,7 @@ let hsbPythonCode = "hsb_color(180.00, 0.50, 0.50)";
   }
 </style>
 
-<div class="tab-container" id="color-generator">
+<div class="tab-container" id="color-generator-tool">
   <!-- Main tabs to switch between RGB and HSB modes -->
   <Tabs syncKey="color-mode">
     <!-- RGB Tab -->
@@ -425,7 +425,7 @@ let hsbPythonCode = "hsb_color(180.00, 0.50, 0.50)";
   } from "../utils/color-tools.mjs";
 
   function initializeColorGenerator() {
-    const root = document.getElementById("color-generator");
+    const root = document.getElementById("color-generator-tool");
     if (!(root instanceof HTMLElement) || root.dataset.initialized === "true") {
       return;
     }
